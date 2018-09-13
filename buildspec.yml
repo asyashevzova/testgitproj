@@ -18,7 +18,7 @@ phases:
       # - command
   pre_build:
     commands:
-       - $(aws ecr get-login --region us-east-1)
+       - sudo (aws ecr get-login --region us-east-1)
       # - command
     #finally:
       # - command
