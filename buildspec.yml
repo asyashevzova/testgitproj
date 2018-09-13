@@ -25,14 +25,14 @@ phases:
       # - command
   build:
     commands:
-       - docker build -t testjavaap .
-       - docker tag testjavaap:latest 151907672846.dkr.ecr.us-east-1.amazonaws.com/testjavaap:latest
+       - docker build -t testjavaapp .
+       - docker tag testjavaapp:javaapp 151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo:javaapp
     #finally:
       # - command
       # - command
   post_build:
     commands:
-       - docker push 151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo:latest
+       - docker push 151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo:javaapp
       # - command
     #finally:
       # - command
