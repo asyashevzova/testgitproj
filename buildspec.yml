@@ -11,7 +11,7 @@ version: 0.2
 phases:
   install:
     commands:
-       - apt install awscli
+       - apt install awscli -y
       # - command
     #finally:
       # - command
