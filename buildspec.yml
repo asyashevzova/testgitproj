@@ -12,7 +12,7 @@ phases:
   install:
     commands:
        - apt install awscli -y
-       - apt install docker.io
+       - apt install docker.io -y
     #finally:
       # - command
       # - command
