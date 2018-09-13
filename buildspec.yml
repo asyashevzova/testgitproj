@@ -9,16 +9,16 @@ version: 0.2
      # key: "value"
 
 phases:
-  #install:
-    #commands:
-      # - command
+  install:
+    commands:
+       - apt install awscli
       # - command
     #finally:
       # - command
       # - command
   pre_build:
     commands:
-       - sudo (aws ecr get-login --region us-east-1)
+       - $(aws ecr get-login --region us-east-1)
       # - command
     #finally:
       # - command
