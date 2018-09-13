@@ -10,16 +10,16 @@ version: 0.2
 
 phases:
         #  install:
-          #    commands:
+        #     commands:
             #       - apt install awscli -y
          #       - apt install docker.io -y
          #       - systemctl start docker
     #finally:
       # - command
       # - command
-      #  pre_build:
-      #    commands:
-      #       - $(aws ecr get-login --region us-east-1)
+  pre_build:
+    commands:
+       - $(aws ecr get-login --region us-east-1)
       # - command
     #finally:
       # - command
