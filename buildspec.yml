@@ -1,0 +1,50 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+  #install:
+    #commands:
+      # - command
+      # - command
+    #finally:
+      # - command
+      # - command
+  pre_build:
+    commands:
+       - $(aws ecr get-login --no-include-email --region us-east-1)
+      # - command
+    #finally:
+      # - command
+      # - command
+  build:
+    commands:
+       - docker build -t testjavaap .
+       - docker tag testjavaap:latest 151907672846.dkr.ecr.us-east-1.amazonaws.com/testjavaap:latest
+    #finally:
+      # - command
+      # - command
+  post_build:
+    commands:
+       - docker push 151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo:latest
+      # - command
+    #finally:
+      # - command
+      # - command
+#artifacts:
+  #files:
+    # - location
+    # - location
+    # - name
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - path
+    # - path
