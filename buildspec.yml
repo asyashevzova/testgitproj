@@ -41,7 +41,7 @@ phases:
     #finally:
       # - command
       # - command
-  artifacts:
+artifacts:
     files: imagedefinitions.json
     # - location
     # - location
