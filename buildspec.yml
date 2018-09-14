@@ -29,7 +29,7 @@ phases:
       # - command
   build:
     commands:
-       - docker build -t $REPOSITORY_URI:latest
+       - docker build -t $REPOSITORY_URI
        - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
     #finally:
       # - command
