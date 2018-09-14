@@ -36,7 +36,7 @@ phases:
       # - command
   post_build:
     commands:
-       - docker push $REPOSITORY_URI::$IMAGE_TAG
+       - docker push $REPOSITORY_URI:$IMAGE_TAG
        - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
     #finally:
       # - command
