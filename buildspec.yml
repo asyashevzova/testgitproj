@@ -20,26 +20,29 @@ phases:
   pre_build:
     commands:
        - $(aws ecr get-login --no-include-email --region us-east-1)
+       - REPOSITORY_URI=151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo
+       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+       - IMAGE_TAG=${COMMIT_HASH:=javaapp}
       # - command
     #finally:
       # - command
       # - command
   build:
     commands:
-       - docker build -t testjavaapp .
-       - docker tag testjavaapp:latest 151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo:javaapp
+       - docker build -t $REPOSITORY_URI:latest
+       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
     #finally:
       # - command
       # - command
   post_build:
     commands:
-       - docker push 151907672846.dkr.ecr.us-east-1.amazonaws.com/test-ecs-repo:javaapp
-      # - command
+       - docker push $REPOSITORY_URI::$IMAGE_TAG
+       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
     #finally:
       # - command
       # - command
-#artifacts:
-  #files:
+  artifacts:
+    files: imagedefinitions.json
     # - location
     # - location
     # - name
